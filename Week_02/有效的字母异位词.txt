@@ -1,0 +1,23 @@
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        //判断s和t的长度是否相等
+        if(s.length() != t.length()) {
+            return false;
+        }
+        //初始化26个字母哈希表，遍历s和t
+        vector <int> table(26,0);
+        for(auto cou : s) {
+            table[cou-'a']++;
+        } 
+        //判断遍历后的哈希表，如果值为0，则是字母异位词
+        for(auto cou : t) {
+            table[cou-'a']--;
+            //当t中该字母数量多于s时，判断不是
+            if(table[cou-'a'] < 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+};

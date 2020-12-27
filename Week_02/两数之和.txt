@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        //创建哈希表 a
+        map<int,int> a;
+        vector<int> val(2,-1);
+        for(int i=0; i < nums.size(); i++) {
+            //map.count(n) 查询在n的位置有没有，有：1，没有：0
+            
+            if(a.count(target-nums[i]) > 0) {
+                //如果有，存入数组val
+                val[0] = a[target-nums[i]];
+                val[1] = i;
+                break;
+                cout<<a[target-nums[i]]<<' '<<i<<endl;
+            }
+            //将nums数组和下标存入哈希表a
+            a[nums[i]] = i; //注意：：：这句话必须在if判断的后面，可以排除本身
+        }
+        return val;
+    };
+};
